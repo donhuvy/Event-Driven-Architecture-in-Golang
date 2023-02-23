@@ -345,6 +345,17 @@ services:
     ports:
       - "3000:3000"
 
+  pgadmin:
+    container_name: pgadmin4
+    image: dpage/pgadmin4:latest
+    restart: unless-stopped
+    ports:
+      - "5987:80"
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - PGADMIN_DEFAULT_EMAIL=admin@example.com
+      - PGADMIN_DEFAULT_PASSWORD=12345678
+    hostname: pgadmin
 volumes:
   pgdata:
   jsdata:
